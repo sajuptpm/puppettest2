@@ -4,7 +4,7 @@
 require 'facter'
  
 # Get the instance-id and set it as a fact.
-cmd = sprintf('/usr/bin/wget -q -O - http://169.254.169.254/latest/meta-data/vm-type')
+cmd = sprintf('/usr/bin/wget -q -O - http://169.254.169.254/latest/meta-data/vm_type')
 result = `#{cmd}`
 Facter.add('instance_type') do
     setcode { result }
