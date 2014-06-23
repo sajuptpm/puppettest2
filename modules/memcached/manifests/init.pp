@@ -10,11 +10,16 @@ class memcached(
     ensure  => $package_ensure,
   }
 
-
+  service { "memcached":
+    ensure  => "running",
+    enable  => "true",
+  }
 
   file { $config_file:
     content => template($local_settings_template),
     mode    => '0644',
+    notify  => Service["memcached"],
+    
   }
 
   }
