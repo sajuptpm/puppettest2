@@ -9,9 +9,11 @@ result = `#{cmd}`
 result = JSON.parse(result)
 instance_type = result["meta"]["vm_type"]
 memcached_add = result["meta"]["memcached"]
+###SM:new fact
 Facter.add('instance_type') do
     setcode { instance_type }
 end
+###SM:new fact
 Facter.add('memcached_add') do
     setcode { memcached_add }
 end
